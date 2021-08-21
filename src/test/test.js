@@ -78,6 +78,13 @@ test('should return emty arr(given empty arr)', () => {
     expect(sortCharactersByHealthDesc(testcase)).toEqual(ex);
 });
 
+test('should return emty arr(given arr with empty obj)', () => {
+    let testcase = [{}, {}, {}, {}];
+    expect(() => {
+        sortCharactersByHealthDesc(testcase).toThrow(Error);
+    })
+});
+
 test('should throw exception(given array with wrong health values)', () => {
     let testArray = ['', '123', [], {}, true, false];
     for (let testcase of testArray) {
@@ -92,7 +99,7 @@ test('should throw exception(given array with wrong health values)', () => {
     }
 });
 
-test('should throw exception(given array with wrong health values)', () => {
+test('should throw exception(given array with wrong name values)', () => {
     let testArray = ['', 123, [], {}, true, false];
     for (let testcase of testArray) {
         let t = [
@@ -104,4 +111,17 @@ test('should throw exception(given array with wrong health values)', () => {
             sortCharactersByHealthDesc(t).toThrow(Error);
         })
     }
+});
+
+test('should throw exception(given array with wrong health values)', () => {
+    let t = [
+        { name: 123, health: 100 },
+        { name: "Maxim", health: 70 },
+        { name: "Alex", health: 100 }
+    ];
+
+    expect(() => {
+        sortCharactersByHealthDesc(t).toThrow(Error);
+        sortCharactersByHealthDesc(t).toThrow("wrong input data");
+    })
 });
