@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/ypum2vran6cm17gu/branch/master?svg=true)](https://ci.appveyor.com/project/GromakMaxim/js-unittests2/branch/master)
