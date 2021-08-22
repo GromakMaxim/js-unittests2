@@ -4,7 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest --coverage",
+        "serve": "http-server src",
+        "lint": "eslint .",
+        "build": "webpack --mode production"
     },
     "keywords": [],
     "author": "",
@@ -15,6 +18,15 @@
         "@babel/preset-env": "^7.15.0",
         "babel-jest": "^27.0.6",
         "core-js": "^3.16.2",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.24.1",
+        "http-server": "^13.0.1",
         "jest": "^27.0.6"
+    },
+    "dependencies": {
+        "webpack": "^5.51.1",
+        "webpack-cli": "^4.8.0",
+        "webpack-dev-server": "^4.0.0"
     }
 }
