@@ -125,3 +125,8 @@ test('should throw exception(given array with wrong health values)', () => {
     sortCharactersByHealthDesc(t).toThrow('wrong input data');
   });
 });
+
+test('checking that to be won t work', () => {
+  const result = sortCharactersByHealthDesc([{ name: 'мечник', health: 10 }, { name: 'маг', health: 100 }]);
+  expect(result).not.toBe([{ name: 'маг', health: 100 }, { name: 'мечник', health: 10 }]);
+});
