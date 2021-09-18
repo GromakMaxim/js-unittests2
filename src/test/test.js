@@ -80,7 +80,7 @@ test('should return empty arr(given empty arr)', () => {
 
 test('should throw exceprion(given arr with empty obj)', () => {
   const testcase = [{}, {}, {}, {}];
-  expect(()=> {
+  expect(() => {
     sortCharactersByHealthDesc(testcase);
   }).toThrow();
 });
@@ -89,12 +89,12 @@ test('should throw exception(given array with wrong health values)', () => {
   const testArray = ['', '123', [], {}, true, false];
 
   for (const testcase of testArray) {
-    let t = [
+    const t = [
       { name: 'маг', health: testcase },
       { name: 'лучник', health: testcase },
       { name: 'мечник', health: testcase },
     ];
-    expect(()=>{
+    expect(() => {
       sortCharactersByHealthDesc(t);
     }).toThrow();
   }
@@ -108,7 +108,7 @@ test('should throw exception(given array with wrong name values)', () => {
       { name: testcase, health: 70 },
       { name: testcase, health: 100 },
     ];
-    expect(()=>{
+    expect(() => {
       sortCharactersByHealthDesc(t);
     }).toThrow();
   }
@@ -121,15 +121,15 @@ test('should throw exception(given array with wrong health values)', () => {
     { name: 'Alex', health: 100 },
   ];
 
-  expect(()=>{
-      sortCharactersByHealthDesc(t);
-    }).toThrow();
+  expect(() => {
+    sortCharactersByHealthDesc(t);
+  }).toThrow();
 });
 
 test('checking that to be won t work', () => {
-  let testcase = [
+  const testcase = [
     { name: 'мечник', health: 10 },
-    { name: 'маг', health: 100 }
+    { name: 'маг', health: 100 },
   ];
   const result = sortCharactersByHealthDesc(testcase);
   expect(result).not.toBe([{ name: 'маг', health: 100 }, { name: 'мечник', health: 10 }]);
