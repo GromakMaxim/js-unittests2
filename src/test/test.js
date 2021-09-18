@@ -72,30 +72,31 @@ test('should sort correctly(given arr with equal health values)', () => {
 incorrect data
 */
 
-test('should return emty arr(given empty arr)', () => {
+test('should return empty arr(given empty arr)', () => {
   const testcase = [];
   const ex = [];
   expect(sortCharactersByHealthDesc(testcase)).toEqual(ex);
 });
 
-test('should return emty arr(given arr with empty obj)', () => {
+test('should throw exceprion(given arr with empty obj)', () => {
   const testcase = [{}, {}, {}, {}];
-  expect(() => {
-    sortCharactersByHealthDesc(testcase).toThrow(Error);
-  });
+  expect(()=> {
+    sortCharactersByHealthDesc(testcase);
+  }).toThrow();
 });
 
 test('should throw exception(given array with wrong health values)', () => {
   const testArray = ['', '123', [], {}, true, false];
+
   for (const testcase of testArray) {
-    const t = [
+    let t = [
       { name: 'маг', health: testcase },
       { name: 'лучник', health: testcase },
       { name: 'мечник', health: testcase },
     ];
-    expect(() => {
-      sortCharactersByHealthDesc(t).toThrow(Error);
-    });
+    expect(()=>{
+      sortCharactersByHealthDesc(t);
+    }).toThrow();
   }
 });
 
@@ -107,9 +108,9 @@ test('should throw exception(given array with wrong name values)', () => {
       { name: testcase, health: 70 },
       { name: testcase, health: 100 },
     ];
-    expect(() => {
-      sortCharactersByHealthDesc(t).toThrow(Error);
-    });
+    expect(()=>{
+      sortCharactersByHealthDesc(t);
+    }).toThrow();
   }
 });
 
@@ -120,13 +121,16 @@ test('should throw exception(given array with wrong health values)', () => {
     { name: 'Alex', health: 100 },
   ];
 
-  expect(() => {
-    sortCharactersByHealthDesc(t).toThrow(Error);
-    sortCharactersByHealthDesc(t).toThrow('wrong input data');
-  });
+  expect(()=>{
+      sortCharactersByHealthDesc(t);
+    }).toThrow();
 });
 
 test('checking that to be won t work', () => {
-  const result = sortCharactersByHealthDesc([{ name: 'мечник', health: 10 }, { name: 'маг', health: 100 }]);
+  let testcase = [
+    { name: 'мечник', health: 10 },
+    { name: 'маг', health: 100 }
+  ];
+  const result = sortCharactersByHealthDesc(testcase);
   expect(result).not.toBe([{ name: 'маг', health: 100 }, { name: 'мечник', health: 10 }]);
 });
